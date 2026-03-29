@@ -7,45 +7,41 @@
     <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; text-align: center; margin: 0; padding: 0; background-color: #f0f2f5; color: #333; padding-bottom: 50px; }
         header { background: linear-gradient(135deg, #001a40, #003380); color: white; padding: 30px 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        h1 { margin: 0; font-size: 24px; letter-spacing: 1px; }
+        h1 { margin: 0; font-size: 24px; }
         .tagline { font-size: 13px; margin-top: 10px; color: #ffd700; font-weight: bold; }
         
         .container { display: flex; flex-direction: column; gap: 20px; align-items: center; margin-top: 25px; padding: 0 15px; }
         
-        /* GreenPay Special Card */
-        .greenpay-card { 
+        /* Card Styles */
+        .info-card { 
             background: white; 
             width: 100%; 
             max-width: 400px; 
             border-radius: 15px; 
             overflow: hidden; 
-            border: 2px solid #28a745; 
             box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 10px;
         }
-        .gp-header { background: #28a745; color: white; padding: 15px; font-weight: bold; font-size: 18px; }
-        .gp-body { padding: 15px; text-align: left; font-size: 13px; line-height: 1.6; }
-        .gp-title { color: #28a745; font-weight: bold; border-bottom: 1px solid #eee; margin-bottom: 10px; display: block; font-size: 15px; }
-        .gateway-item { margin-bottom: 8px; padding-bottom: 5px; border-bottom: 1px dashed #ddd; }
-        .gateway-name { font-weight: bold; color: #001a40; }
-        .mdr { color: #d32f2f; font-weight: bold; }
+        .card-header { color: white; padding: 15px; font-weight: bold; font-size: 18px; }
+        .card-body { padding: 15px; text-align: left; font-size: 13px; line-height: 1.5; }
+        .section-title { font-weight: bold; border-bottom: 1px solid #eee; margin-bottom: 8px; display: block; font-size: 14px; padding-top: 5px; }
         
-        .gp-footer { background: #f9f9f9; padding: 10px; font-size: 12px; font-weight: bold; color: #555; }
-        .login-btn-gp { background: #28a745; color: white; text-decoration: none; display: block; padding: 12px; margin: 10px; border-radius: 8px; font-weight: bold; text-align: center; }
+        .detail-row { margin-bottom: 10px; padding: 8px; background: #f9f9f9; border-radius: 5px; border-left: 4px solid #001a40; }
+        .mdr-val { color: #d32f2f; font-weight: bold; }
+        .limit-val { color: #0056b3; font-weight: bold; }
 
-        /* Other Buttons */
-        .other-btn { 
-            background: white; 
-            color: #001a40; 
-            padding: 18px; 
-            text-decoration: none; 
-            border-radius: 12px; 
-            width: 100%; 
-            max-width: 370px; 
-            font-weight: bold;
-            border: 2px solid #001a40;
-            display: block;
-            box-sizing: border-box;
-        }
+        /* Color Variations */
+        .green-theme { border: 2px solid #28a745; }
+        .green-theme .card-header { background: #28a745; }
+        .blue-theme { border: 2px solid #0056b3; }
+        .blue-theme .card-header { background: #0056b3; }
+
+        .login-btn { text-decoration: none; display: block; padding: 12px; margin: 10px; border-radius: 8px; font-weight: bold; text-align: center; color: white; }
+        .btn-green { background: #28a745; }
+        .btn-blue { background: #0056b3; }
+
+        /* Simple Buttons */
+        .other-btn { background: white; color: #001a40; padding: 18px; text-decoration: none; border-radius: 12px; width: 100%; max-width: 370px; font-weight: bold; border: 2px solid #001a40; display: block; box-sizing: border-box; }
 
         .contact-section { margin-top: 30px; padding: 20px; background: white; border-radius: 15px; width: 90%; max-width: 370px; margin-left: auto; margin-right: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #ddd; }
         .action-buttons { display: flex; gap: 10px; margin-top: 15px; }
@@ -62,24 +58,49 @@
 
     <div class="container">
         
-        <div class="greenpay-card">
-            <div class="gp-header">📊 GreenPay Gateway Details</div>
-            <div class="gp-body">
-                <span class="gp-title">Gateway Options:</span>
-                <div class="gateway-item"><span class="gateway-name">PG2 – EDUCATION:</span> <span class="mdr">MDR 1.3%</span> | Limit: ₹95,000</div>
-                <div class="gateway-item"><span class="gateway-name">PG3 – TRAVEL (AMEX):</span> <span class="mdr">MDR 3.3%</span> | Limit: ₹2,00,000</div>
-                <div class="gateway-item"><span class="gateway-name">PG4 – FASTag:</span> <span class="mdr">MDR 1.55%</span> | Limit: ₹1,00,000</div>
-                <div class="gateway-item"><span class="gateway-name">PG5 – EDUCATION:</span> <span class="mdr">MDR 1.4%</span> | Limit: ₹1,50,000</div>
-                <div class="gateway-item"><span class="gateway-name">PG6 – FASTag:</span> <span class="mdr">MDR 1.4%</span> | Limits: R-15k, V/M-50k</div>
-                <div class="gateway-item"><span class="gateway-name">PG7 – TRAVEL:</span> <span class="mdr">MDR 1.4%</span> | Limits: R-15k, V/M-50k</div>
-                
-                <p style="margin: 10px 0; font-weight: bold; color: #28a745;">💳 CC Bill Payments | Payin & Payout (Till 11:30 PM)</p>
+        <div class="info-card blue-theme">
+            <div class="card-header">📊 PaySwitch Gateway Details</div>
+            <div class="card-body">
+                <div class="detail-row">
+                    <span class="section-title">New Education</span>
+                    Dom: <span class="mdr-val">1.43%</span> | Bus: <span class="mdr-val">1.80%</span><br>
+                    Limits: <span class="limit-val">₹45,000 & 40,000</span>
+                </div>
+                <div class="detail-row">
+                    <span class="section-title">R EDUCATION</span>
+                    Dom: <span class="mdr-val">1.35%</span> | Bus: <span class="mdr-val">1.80%</span><br>
+                    Limits: <span class="limit-val">V/M: ₹45k, RuPay: ₹40k</span>
+                </div>
+                <div class="detail-row">
+                    <span class="section-title">Travel Pure New Update</span>
+                    Dom: <span class="mdr-val">1.37%</span> | Bus: <span class="mdr-val">1.70%</span><br>
+                    Limits: <span class="limit-val">V/M: ₹50k, RuPay: ₹15k</span>
+                </div>
+                <div class="detail-row">
+                    <span class="section-title">R TRAVEL</span>
+                    Dom: <span class="mdr-val">1.40%</span> | Bus: <span class="mdr-val">1.80%</span><br>
+                    Limits: <span class="limit-val">V/M: ₹40k, RuPay: ₹15k</span>
+                </div>
+                <div class="detail-row">
+                    <span class="section-title">TRAVEL</span>
+                    Dom: <span class="mdr-val">1.42%</span> | Bus: <span class="mdr-val">1.80%</span><br>
+                    Limits: <span class="limit-val">₹99,999/-</span>
+                </div>
             </div>
-            <div class="gp-footer">🚀 Unlimited Transactions | No TXN Limits</div>
-            <a href="https://vendor.greenpaynetwork.co.in/login" class="login-btn-gp">GreenPay Login</a>
+            <a href="https://retailer.payswitch.co.in/login" class="login-btn btn-blue">PaySwitch Login</a>
         </div>
 
-        <a href="https://retailer.payswitch.co.in/login" class="other-btn">PaySwitch Login</a>
+        <div class="info-card green-theme">
+            <div class="card-header">📊 GreenPay Gateway Details</div>
+            <div class="card-body" style="font-size: 12px;">
+                <b>PG2:</b> 1.3% (95k) | <b>PG3:</b> 3.3% (2L)<br>
+                <b>PG4:</b> 1.55% (1L) | <b>PG5:</b> 1.4% (1.5L)<br>
+                <b>PG6 & PG7:</b> 1.4% (R-15k, V/M-50k)
+                <p style="margin: 5px 0; color: #28a745; font-weight: bold;">CC Bill Pay | Payout till 11:30 PM</p>
+            </div>
+            <a href="https://vendor.greenpaynetwork.co.in/login" class="login-btn btn-green">GreenPay Login</a>
+        </div>
+
         <a href="https://merchant.shadvalpay.co.in/login/login?ReturnUrl=%2f" class="other-btn">ShadvalPay Login</a>
         <a href="https://credpay.cpd.net.in/login" class="other-btn">CredPay Login</a>
 
@@ -91,7 +112,6 @@
             <a href="tel:8978323221" class="call-btn">📞 Call Now</a>
             <a href="https://wa.me/918978323221" class="wa-btn">💬 WhatsApp</a>
         </div>
-        <p style="font-size: 10px; margin-top: 15px; color: #888;">GREENPAY TECH - Official Partner</p>
     </div>
 
 </body>
