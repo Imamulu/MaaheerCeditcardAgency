@@ -5,48 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maaheer Credit Card Agency</title>
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; text-align: center; margin: 0; padding: 0; background-color: #f0f2f5; color: #333; padding-bottom: 50px; }
-        header { background: linear-gradient(135deg, #001a40, #003380); color: white; padding: 30px 15px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        h1 { margin: 0; font-size: 24px; }
-        .tagline { font-size: 13px; margin-top: 10px; color: #ffd700; font-weight: bold; }
-        
-        .container { display: flex; flex-direction: column; gap: 20px; align-items: center; margin-top: 25px; padding: 0 15px; }
-        
-        /* Card Styles */
-        .info-card { 
-            background: white; 
-            width: 100%; 
-            max-width: 400px; 
-            border-radius: 15px; 
-            overflow: hidden; 
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            margin-bottom: 10px;
+        body { font-family: 'Segoe UI', Arial, sans-serif; text-align: center; margin: 0; padding: 0; background-color: #f0f2f5; padding-bottom: 50px; }
+        header { background: linear-gradient(135deg, #001a40, #003380); color: white; padding: 25px 15px; }
+        h1 { margin: 0; font-size: 22px; }
+        .tagline { font-size: 13px; margin-top: 8px; color: #ffd700; }
+
+        .container { padding: 15px; display: flex; flex-direction: column; gap: 12px; align-items: center; }
+
+        /* Accordion Style */
+        .accordion {
+            width: 100%;
+            max-width: 400px;
+            background: white;
+            border-radius: 10px;
+            border: 1px solid #ddd;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        .card-header { color: white; padding: 15px; font-weight: bold; font-size: 18px; }
-        .card-body { padding: 15px; text-align: left; font-size: 13px; line-height: 1.5; }
-        .section-title { font-weight: bold; border-bottom: 1px solid #eee; margin-bottom: 8px; display: block; font-size: 14px; padding-top: 5px; }
-        
-        .detail-row { margin-bottom: 10px; padding: 8px; background: #f9f9f9; border-radius: 5px; border-left: 4px solid #001a40; }
-        .mdr-val { color: #d32f2f; font-weight: bold; }
-        .limit-val { color: #0056b3; font-weight: bold; }
 
-        /* Color Variations */
-        .green-theme { border: 2px solid #28a745; }
-        .green-theme .card-header { background: #28a745; }
-        .blue-theme { border: 2px solid #0056b3; }
-        .blue-theme .card-header { background: #0056b3; }
+        .acc-header {
+            padding: 15px;
+            background: #fff;
+            color: #001a40;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
 
-        .login-btn { text-decoration: none; display: block; padding: 12px; margin: 10px; border-radius: 8px; font-weight: bold; text-align: center; color: white; }
-        .btn-green { background: #28a745; }
-        .btn-blue { background: #0056b3; }
+        .acc-content {
+            display: none; /* ముందే దాచిపెడుతుంది */
+            padding: 15px;
+            text-align: left;
+            background: #fafafa;
+            font-size: 13px;
+            line-height: 1.6;
+        }
 
-        /* Simple Buttons */
-        .other-btn { background: white; color: #001a40; padding: 18px; text-decoration: none; border-radius: 12px; width: 100%; max-width: 370px; font-weight: bold; border: 2px solid #001a40; display: block; box-sizing: border-box; }
+        .gateway-box {
+            background: #fff;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-left: 4px solid #0056b3;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
 
-        .contact-section { margin-top: 30px; padding: 20px; background: white; border-radius: 15px; width: 90%; max-width: 370px; margin-left: auto; margin-right: auto; box-shadow: 0 2px 10px rgba(0,0,0,0.05); border: 1px solid #ddd; }
-        .action-buttons { display: flex; gap: 10px; margin-top: 15px; }
-        .call-btn { background-color: #007bff; color: white; padding: 12px; text-decoration: none; border-radius: 8px; font-weight: bold; flex: 1; }
-        .wa-btn { background-color: #25D366; color: white; padding: 12px; text-decoration: none; border-radius: 8px; font-weight: bold; flex: 1; }
+        .login-link {
+            display: block;
+            background: #001a40;
+            color: white;
+            text-align: center;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* Contact Section */
+        .contact-section { margin: 20px; padding: 20px; background: white; border-radius: 15px; max-width: 360px; margin-left: auto; margin-right: auto; }
+        .btn-row { display: flex; gap: 10px; margin-top: 15px; }
+        .c-btn { flex: 1; padding: 12px; border-radius: 8px; text-decoration: none; color: white; font-weight: bold; }
     </style>
 </head>
 <body>
@@ -58,61 +80,56 @@
 
     <div class="container">
         
-        <div class="info-card blue-theme">
-            <div class="card-header">📊 PaySwitch Gateway Details</div>
-            <div class="card-body">
-                <div class="detail-row">
-                    <span class="section-title">New Education</span>
-                    Dom: <span class="mdr-val">1.43%</span> | Bus: <span class="mdr-val">1.80%</span><br>
-                    Limits: <span class="limit-val">₹45,000 & 40,000</span>
-                </div>
-                <div class="detail-row">
-                    <span class="section-title">R EDUCATION</span>
-                    Dom: <span class="mdr-val">1.35%</span> | Bus: <span class="mdr-val">1.80%</span><br>
-                    Limits: <span class="limit-val">V/M: ₹45k, RuPay: ₹40k</span>
-                </div>
-                <div class="detail-row">
-                    <span class="section-title">Travel Pure New Update</span>
-                    Dom: <span class="mdr-val">1.37%</span> | Bus: <span class="mdr-val">1.70%</span><br>
-                    Limits: <span class="limit-val">V/M: ₹50k, RuPay: ₹15k</span>
-                </div>
-                <div class="detail-row">
-                    <span class="section-title">R TRAVEL</span>
-                    Dom: <span class="mdr-val">1.40%</span> | Bus: <span class="mdr-val">1.80%</span><br>
-                    Limits: <span class="limit-val">V/M: ₹40k, RuPay: ₹15k</span>
-                </div>
-                <div class="detail-row">
-                    <span class="section-title">TRAVEL</span>
-                    Dom: <span class="mdr-val">1.42%</span> | Bus: <span class="mdr-val">1.80%</span><br>
-                    Limits: <span class="limit-val">₹99,999/-</span>
-                </div>
+        <div class="accordion">
+            <div class="acc-header" onclick="toggleAcc('payswitch')">
+                PaySwitch Details <span>▼</span>
             </div>
-            <a href="https://retailer.payswitch.co.in/login" class="login-btn btn-blue">PaySwitch Login</a>
+            <div id="payswitch" class="acc-content">
+                <div class="gateway-box"><b>New Education:</b> Dom 1.43% | Bus 1.80%<br>Limit: ₹45,000</div>
+                <div class="gateway-box"><b>R EDUCATION:</b> Dom 1.35% | Bus 1.80%<br>Limit: V/M 45k, R 40k</div>
+                <div class="gateway-box"><b>Travel Pure:</b> Dom 1.37% | Bus 1.70%<br>Limit: V/M 50k, R 15k</div>
+                <div class="gateway-box"><b>R TRAVEL:</b> Dom 1.40% | Bus 1.80%<br>Limit: V/M 40k, R 15k</div>
+                <div class="gateway-box"><b>TRAVEL:</b> Dom 1.42% | Bus 1.80%<br>Limit: ₹99,999/-</div>
+                <a href="https://retailer.payswitch.co.in/login" class="login-link">PaySwitch Login</a>
+            </div>
         </div>
 
-        <div class="info-card green-theme">
-            <div class="card-header">📊 GreenPay Gateway Details</div>
-            <div class="card-body" style="font-size: 12px;">
-                <b>PG2:</b> 1.3% (95k) | <b>PG3:</b> 3.3% (2L)<br>
-                <b>PG4:</b> 1.55% (1L) | <b>PG5:</b> 1.4% (1.5L)<br>
-                <b>PG6 & PG7:</b> 1.4% (R-15k, V/M-50k)
-                <p style="margin: 5px 0; color: #28a745; font-weight: bold;">CC Bill Pay | Payout till 11:30 PM</p>
+        <div class="accordion">
+            <div class="acc-header" onclick="toggleAcc('greenpay')">
+                GreenPay Details <span>▼</span>
             </div>
-            <a href="https://vendor.greenpaynetwork.co.in/login" class="login-btn btn-green">GreenPay Login</a>
+            <div id="greenpay" class="acc-content">
+                <div class="gateway-box"><b>PG2 & PG5:</b> 1.3% - 1.4% (Education)</div>
+                <div class="gateway-box"><b>PG3 & PG7:</b> 3.3% - 1.4% (Travel)</div>
+                <div class="gateway-box"><b>PG4 & PG6:</b> 1.55% - 1.4% (FASTag)</div>
+                <p style="color: green; font-weight: bold;">Payout till 11:30 PM | No TXN Limits</p>
+                <a href="https://vendor.greenpaynetwork.co.in/login" class="login-link" style="background:#28a745;">GreenPay Login</a>
+            </div>
         </div>
 
-        <a href="https://merchant.shadvalpay.co.in/login/login?ReturnUrl=%2f" class="other-btn">ShadvalPay Login</a>
-        <a href="https://credpay.cpd.net.in/login" class="other-btn">CredPay Login</a>
+        <a href="https://merchant.shadvalpay.co.in/login/login?ReturnUrl=%2f" class="login-link" style="width: 100%; max-width: 375px; background: #fff; color: #001a40; border: 1px solid #ddd;">ShadvalPay Login</a>
+        <a href="https://credpay.cpd.net.in/login" class="login-link" style="width: 100%; max-width: 375px; background: #fff; color: #001a40; border: 1px solid #ddd;">CredPay Login</a>
 
     </div>
 
     <div class="contact-section">
-        <div style="font-weight: bold; font-size: 18px;">సంప్రదించండి: 8978323221</div>
-        <div class="action-buttons">
-            <a href="tel:8978323221" class="call-btn">📞 Call Now</a>
-            <a href="https://wa.me/918978323221" class="wa-btn">💬 WhatsApp</a>
+        <b>సంప్రదించండి: 8978323221</b>
+        <div class="btn-row">
+            <a href="tel:8978323221" class="c-btn" style="background: #007bff;">📞 Call</a>
+            <a href="https://wa.me/918978323221" class="c-btn" style="background: #25D366;">💬 WhatsApp</a>
         </div>
     </div>
+
+    <script>
+        function toggleAcc(id) {
+            var x = document.getElementById(id);
+            if (x.style.display === "block") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "block";
+            }
+        }
+    </script>
 
 </body>
 </html>
