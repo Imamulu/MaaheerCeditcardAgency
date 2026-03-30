@@ -8,7 +8,7 @@
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f8f9fa;
+            background-color: #f4f7f9;
             margin: 0;
             padding: 0;
             display: flex;
@@ -20,40 +20,46 @@
             max-width: 450px;
             background: white;
             min-height: 100vh;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
 
-        /* Header Styling */
+        /* Header Section */
         .header {
             background: linear-gradient(180deg, #001f3f 0%, #003366 100%);
             color: white;
             text-align: center;
-            padding: 20px 10px;
+            padding: 25px 15px;
+            border-bottom: 4px solid #ffd700;
         }
 
         .header h1 {
             margin: 0;
-            font-size: 22px;
-            letter-spacing: 1px;
+            font-size: 24px;
+            text-transform: uppercase;
         }
 
         .header p {
-            margin: 10px 0 0;
-            font-size: 14px;
-            color: #ffd700; /* Gold color for Telugu text */
+            margin: 8px 0 0;
+            font-size: 15px;
+            color: #ffd700;
+            font-weight: 500;
         }
 
         /* Services Section */
         .content {
-            padding: 15px;
+            padding: 20px 15px;
         }
 
         .service-card {
-            border: 1px solid #e0e0e0;
-            border-radius: 10px;
+            border: 1px solid #ddd;
+            border-radius: 12px;
             margin-bottom: 20px;
             overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .service-card:active {
+            transform: scale(0.98);
         }
 
         .details-bar {
@@ -62,56 +68,63 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            color: #003366;
+            color: #333;
             background: #fff;
         }
 
         .login-btn {
             display: block;
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             text-align: center;
             text-decoration: none;
             font-weight: bold;
             font-size: 16px;
-            transition: 0.3s;
             border: none;
-            cursor: pointer;
         }
 
-        /* Color Variants */
+        /* Colors as per your image */
         .payswitch .login-btn { background-color: #001f3f; color: white; }
+        
         .greenpay .login-btn { background-color: #28a745; color: white; }
-        .shadvalpay .login-btn { background-color: #ffffff; color: #003366; border-top: 1px solid #eee; }
-        .credpay .login-btn { background-color: #ffffff; color: #003366; border-top: 1px solid #eee; }
-
-        .login-btn:active {
-            opacity: 0.8;
-            transform: scale(0.98);
+        
+        .shadvalpay .login-btn { 
+            background-color: #ffffff; 
+            color: #001f3f; 
+            border-top: 1px solid #eee; 
+            box-shadow: inset 0 -3px 0 #eee;
+        }
+        
+        .credpay .login-btn { 
+            background-color: #ffffff; 
+            color: #001f3f; 
+            border-top: 1px solid #eee; 
+            box-shadow: inset 0 -3px 0 #eee;
         }
 
-        /* Contact Section */
+        /* Footer & Contact */
         .footer {
             text-align: center;
-            padding: 20px;
+            padding: 30px 20px;
         }
 
         .contact-text {
             font-weight: bold;
             margin-bottom: 15px;
             font-size: 18px;
+            color: #333;
         }
 
         .btn-group {
             display: flex;
-            gap: 10px;
+            gap: 12px;
             justify-content: center;
         }
 
         .contact-btn {
             flex: 1;
-            padding: 12px;
-            border-radius: 8px;
+            padding: 14px;
+            border-radius: 10px;
             text-decoration: none;
             color: white;
             font-weight: bold;
@@ -119,6 +132,7 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
+            font-size: 16px;
         }
 
         .call-btn { background-color: #007bff; }
@@ -137,22 +151,22 @@
     <div class="content">
         <div class="service-card payswitch">
             <div class="details-bar">PaySwitch Details <span>▼</span></div>
-            <a href=https://retailer.payswitch.co.in/</a>
+            <a href="https://retailer.payswitch.co.in/" target="_blank" class="login-btn">PaySwitch Login</a>
         </div>
 
         <div class="service-card greenpay">
             <div class="details-bar">GreenPay Details <span>▼</span></div>
-            <a href=https://vendor.greenpaynetwork.co.in/login</a>
+            <a href="https://vendor.greenpaynetwork.co.in/login" target="_blank" class="login-btn">GreenPay Login</a>
         </div>
 
         <div class="service-card shadvalpay">
             <div class="details-bar">shadvalpay Details <span>▼</span></div>
-            <a href=https://merchant.shadvalpay.co.in/login/login?ReturnUrl=%2f</a>
+            <a href="https://merchant.shadvalpay.co.in/login/login?ReturnUrl=%2f" target="_blank" class="login-btn">ShadvalPay Login</a>
         </div>
 
         <div class="service-card credpay">
             <div class="details-bar">credpay Details <span>▼</span></div>
-            <a href=https://credpay.cpd.net.in/login</a>
+            <a href="https://credpay.cpd.net.in/login" target="_blank" class="login-btn">CredPay Login</a>
         </div>
     </div>
 
