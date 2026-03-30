@@ -1,0 +1,43 @@
+.service-container {
+  font-family: Arial, sans-serif;
+  padding: 15px;
+  max-width: 400px;
+  margin: auto;
+}
+
+.service-box {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.details-row {
+  padding: 12px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.login-btn {
+  display: block;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+
+/* Colors for each box */
+.payswitch .login-btn { background-color: #001f3f; color: white; }
+.greenpay .login-btn { background-color: #28a745; color: white; }
+.shadvalpay .login-btn { background-color: #ffffff; color: #001f3f; border-top: 1px solid #ddd; }
+.credpay .login-btn { background-color: #ffffff; color: #001f3f; border-top: 1px solid #ddd; }
+
+.login-btn:hover {
+  opacity: 0.8;
+}
+
