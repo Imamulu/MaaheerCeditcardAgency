@@ -4,121 +4,170 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maaheer Credit Card Agency</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; text-align: center; margin: 0; padding: 0; background-color: #f0f2f5; padding-bottom: 50px; }
-        header { background: linear-gradient(135deg, #001a40, #003380); color: white; padding: 25px 15px; }
-        h1 { margin: 0; font-size: 22px; }
-        .tagline { font-size: 13px; margin-top: 8px; color: #ffd700; }
-
-        .container { padding: 15px; display: flex; flex-direction: column; gap: 12px; align-items: center; }
-
-        /* Accordion Style */
-        .accordion {
-            width: 100%;
-            max-width: 400px;
-            background: white;
-            border-radius: 10px;
-            border: 1px solid #ddd;
-            overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
         }
 
-        .acc-header {
+        .main-container {
+            width: 100%;
+            max-width: 450px;
+            background: white;
+            min-height: 100vh;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        /* Header Styling */
+        .header {
+            background: linear-gradient(180deg, #001f3f 0%, #003366 100%);
+            color: white;
+            text-align: center;
+            padding: 20px 10px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            margin: 10px 0 0;
+            font-size: 14px;
+            color: #ffd700; /* Gold color for Telugu text */
+        }
+
+        /* Services Section */
+        .content {
             padding: 15px;
-            background: #fff;
-            color: #001a40;
-            font-weight: bold;
-            cursor: pointer;
+        }
+
+        .service-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .details-bar {
+            padding: 12px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid #eee;
-        }
-
-        .acc-content {
-            display: none; /* ముందే దాచిపెడుతుంది */
-            padding: 15px;
-            text-align: left;
-            background: #fafafa;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-
-        .gateway-box {
+            font-weight: 600;
+            color: #003366;
             background: #fff;
-            padding: 10px;
-            margin-bottom: 8px;
-            border-left: 4px solid #0056b3;
-            border-radius: 4px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
         }
 
-        .login-link {
+        .login-btn {
             display: block;
-            background: #001a40;
-            color: white;
+            width: 100%;
+            padding: 15px;
             text-align: center;
-            padding: 12px;
             text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
             font-weight: bold;
+            font-size: 16px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Color Variants */
+        .payswitch .login-btn { background-color: #001f3f; color: white; }
+        .greenpay .login-btn { background-color: #28a745; color: white; }
+        .shadvalpay .login-btn { background-color: #ffffff; color: #003366; border-top: 1px solid #eee; }
+        .credpay .login-btn { background-color: #ffffff; color: #003366; border-top: 1px solid #eee; }
+
+        .login-btn:active {
+            opacity: 0.8;
+            transform: scale(0.98);
         }
 
         /* Contact Section */
-        .contact-section { margin: 20px; padding: 20px; background: white; border-radius: 15px; max-width: 360px; margin-left: auto; margin-right: auto; }
-        .btn-row { display: flex; gap: 10px; margin-top: 15px; }
-        .c-btn { flex: 1; padding: 12px; border-radius: 8px; text-decoration: none; color: white; font-weight: bold; }
+        .footer {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .contact-text {
+            font-weight: bold;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .contact-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .call-btn { background-color: #007bff; }
+        .whatsapp-btn { background-color: #25d366; }
+
     </style>
 </head>
 <body>
 
-    <header>
+<div class="main-container">
+    <div class="header">
         <h1>Maaheer Credit Card Agency</h1>
-        <div class="tagline">త్వరగా • నమ్మకంగా • సురక్షితమైన డిజిటల్ సేవలు</div>
-    </header>
-
-    <div class="service-container">
-  <div class="service-box payswitch">
-    <div class="details-row">PaySwitch Details <span>▼</span></div>
-    <a href="#" class="login-btn">PaySwitch Login</a>
-  </div>
-
-  <div class="service-box greenpay">
-    <div class="details-row">GreenPay Details <span>▼</span></div>
-    <a href="#" class="login-btn">GreenPay Login</a>
-  </div>
-
-  <div class="service-box shadvalpay">
-    <div class="details-row">ShadvalPay Details <span>▼</span></div>
-    <a href="#" class="login-btn">ShadvalPay Login</a>
-  </div>
-
-  <div class="service-box credpay">
-    <div class="details-row">CredPay Details <span>▼</span></div>
-    <a href="#" class="login-btn">CredPay Login</a>
-  </div>
+        <p>త్వరగా • నమ్మకంగా • సురక్షితమైన డిజిటల్ సేవలు</p>
     </div>
-    
-        
-    <div class="contact-section">
-        <b>సంప్రదించండి: 8978323221</b>
-        <div class="btn-row">
-            <a href="tel:8978323221" class="c-btn" style="background: #007bff;">📞 Call</a>
-            <a href="https://wa.me/918978323221" class="c-btn" style="background: #25D366;">💬 WhatsApp</a>
+
+    <div class="content">
+        <div class="service-card payswitch">
+            <div class="details-bar">PaySwitch Details <span>▼</span></div>
+            <a href="YOUR_LOGIN_LINK" class="login-btn">PaySwitch Login</a>
+        </div>
+
+        <div class="service-card greenpay">
+            <div class="details-bar">GreenPay Details <span>▼</span></div>
+            <a href="YOUR_LOGIN_LINK" class="login-btn">GreenPay Login</a>
+        </div>
+
+        <div class="service-card shadvalpay">
+            <div class="details-bar">shadvalpay Details <span>▼</span></div>
+            <a href="YOUR_LOGIN_LINK" class="login-btn">ShadvalPay Login</a>
+        </div>
+
+        <div class="service-card credpay">
+            <div class="details-bar">credpay Details <span>▼</span></div>
+            <a href="YOUR_LOGIN_LINK" class="login-btn">CredPay Login</a>
         </div>
     </div>
 
-    <script>
-        function toggleAcc(id) {
-            var x = document.getElementById(id);
-            if (x.style.display === "block") {
-                x.style.display = "none";
-            } else {
-                x.style.display = "block";
-            }
-        }
-    </script>
+    <div class="footer">
+        <div class="contact-text">సంప్రదించండి: 8978323221</div>
+        <div class="btn-group">
+            <a href="tel:8978323221" class="contact-btn call-btn">
+                <i class="fas fa-phone-alt"></i> Call
+            </a>
+            <a href="https://wa.me/918978323221" class="contact-btn whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> WhatsApp
+            </a>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
